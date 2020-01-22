@@ -3,13 +3,13 @@ package pl.com.sokolski.crud.usercompany;
 import lombok.Value;
 
 @Value
-class DisplayUserCompany {
-    int id;
-    int userId;
-    int companyId;
+public class DisplayUserCompany {
+  int id;
+  int userId;
+  int companyId;
 
-    static DisplayUserCompany of(final UserCompany userCompany) {
-        return new DisplayUserCompany(
-                userCompany.getId(), userCompany.getUserId(), userCompany.getCompanyId());
-    }
+  static DisplayUserCompany of(final UserCompany userCompany) {
+    return new DisplayUserCompany(
+        userCompany.getId(), userCompany.getUserId(), userCompany.getCompanyId());
+  }
 }
