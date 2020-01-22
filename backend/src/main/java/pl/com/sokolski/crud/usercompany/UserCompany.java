@@ -14,13 +14,22 @@ import javax.persistence.Id;
 @Setter
 class UserCompany {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-    @Column(name = "user_id")
-    private int userId;
+  @Column(name = "user_id")
+  private int userId;
 
-    @Column(name = "company_id")
-    private int companyId;
+  @Column(name = "company_id")
+  private int companyId;
+
+  static UserCompany create(NewUserCompany newUserCompany) {
+    final UserCompany userCompany = new UserCompany();
+
+    userCompany.setUserId(newUserCompany.getUserId());
+    userCompany.setCompanyId(newUserCompany.getCompanyId());
+
+    return userCompany;
+  }
 }

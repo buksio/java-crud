@@ -3,7 +3,7 @@ package pl.com.sokolski.crud.company;
 import lombok.Value;
 
 @Value
-class DisplayCompany {
+public class DisplayCompany {
   int id;
   double latitude;
   double longitude;

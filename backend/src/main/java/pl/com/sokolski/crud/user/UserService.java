@@ -9,15 +9,16 @@ import static java.util.stream.Collectors.toList;
 
 @AllArgsConstructor
 @Service
-class UserService {
+public class UserService {
 
   private final UserRepository userRepository;
 
+  public List<DisplayUser> findAllById(final List<Integer> ids) {
+    return userRepository.findAllById(ids).stream().map(DisplayUser::of).collect(toList());
+  }
+
   List<DisplayUser> findAll() {
-    return userRepository.findAll()
-            .stream()
-            .map(DisplayUser::of)
-            .collect(toList());
+    return userRepository.findAll().stream().map(DisplayUser::of).collect(toList());
   }
 
   DisplayUser save(final NewUser newUser) {

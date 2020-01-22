@@ -3,7 +3,7 @@ package pl.com.sokolski.crud.user;
 import lombok.Value;
 
 @Value
-class DisplayUser {
+public class DisplayUser {
   int id;
   String name;
   String surname;
