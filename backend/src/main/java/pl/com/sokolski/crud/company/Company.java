@@ -14,16 +14,16 @@ import javax.persistence.Id;
 @Setter
 class Company {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-    @Column(name = "latitude")
-    private double latitude;
+  @Column(name = "latitude")
+  private double latitude;
 
-    @Column(name = "longitude")
-    private double longitude;
+  @Column(name = "longitude")
+  private double longitude;
 
-    @Column(name = "location")
-    private String location;
+  @Column(name = "location")
+  private String location;
 }

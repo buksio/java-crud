@@ -13,7 +13,7 @@ create table
     primary key (id));
 
 create table
-    user_company_relation ( id serial not null,
+    user_company ( id serial not null,
     user_id int4,
     company_id int4,
     foreign key (user_id) references "user"(id),
