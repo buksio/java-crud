@@ -12,6 +12,12 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
 
+google:
+  geolocation:
+    api_key: xxx
+    url: https://maps.googleapis.com/maps/api/geocode/json
+
+
 ---
 
 environment: docker-compose

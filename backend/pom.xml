@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<postgresql.version>42.2.6</postgresql.version>
+		<json.version>20190722</json.version>
 	</properties>
 
 	<dependencies>
@@ -36,6 +37,11 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>${postgresql.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>${json.version}</version>
 		</dependency>
 
 		<dependency>
