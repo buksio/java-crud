@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false
+
+---
+
+environment: docker-compose
+
+spring:
+  profiles: docker-compose
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://db:5432/crud
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+---
+
+environment: local
+
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/crud
+    username: user
+    password: password
+    driverClassName: org.postgresql.Driver
