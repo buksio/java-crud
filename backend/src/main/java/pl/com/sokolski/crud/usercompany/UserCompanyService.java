@@ -14,13 +14,13 @@ public class UserCompanyService {
   private final UserCompanyRepository userCompanyRepository;
 
   public List<DisplayUserCompany> findAllByUserId(final int userId) {
-    return userCompanyRepository.findByUserId(userId).stream()
+    return userCompanyRepository.findAllByUserId(userId).stream()
         .map(DisplayUserCompany::of)
         .collect(toList());
   }
 
   public List<DisplayUserCompany> findAllByCompanyId(final int companyId) {
-    return userCompanyRepository.findByUserId(companyId).stream()
+    return userCompanyRepository.findAllByCompanyId(companyId).stream()
         .map(DisplayUserCompany::of)
         .collect(toList());
   }

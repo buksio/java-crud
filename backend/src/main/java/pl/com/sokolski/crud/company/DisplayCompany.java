@@ -11,6 +11,6 @@ public class DisplayCompany {
 
   static DisplayCompany of(final Company company) {
     return new DisplayCompany(
-        company.getId(), company.getLatitude(), company.getLatitude(), company.getLocation());
+        company.getId(), company.getLatitude(), company.getLongitude(), company.getLocation());
   }
 }
