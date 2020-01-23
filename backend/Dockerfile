@@ -9,6 +9,8 @@ RUN mvn install
 FROM openjdk:8
 WORKDIR /app
 
+ENV SPRING_PROFILES_ACTIVE=docker-compose
+
 ARG DEPENDENCY=/workspace/app/target
 COPY --from=build ${DEPENDENCY}/crud-0.0.1-SNAPSHOT.jar /app
 
