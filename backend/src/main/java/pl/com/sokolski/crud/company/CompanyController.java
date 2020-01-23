@@ -35,7 +35,7 @@ class CompanyController {
   }
 
   @DeleteMapping("/{id}")
-  ResponseEntity delete(@RequestParam final int id) {
+  ResponseEntity<Integer> delete(@RequestParam final int id) {
     companyService.delete(id);
     return ResponseEntity.ok().body(id);
   }
