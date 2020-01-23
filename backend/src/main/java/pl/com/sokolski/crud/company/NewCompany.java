@@ -4,7 +4,7 @@ import lombok.Value;
 
 @Value
 class NewCompany {
+  String name;
   double latitude;
   double longitude;
-  String location;
 }

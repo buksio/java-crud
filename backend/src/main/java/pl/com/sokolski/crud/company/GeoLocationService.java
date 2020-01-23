@@ -1,4 +1,4 @@
-package pl.com.sokolski.crud.user;
+package pl.com.sokolski.crud.company;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,14 +6,14 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import pl.com.sokolski.crud.user.exception.GeoLocationException;
+import pl.com.sokolski.crud.company.exception.GeoLocationException;
 
 import java.util.HashMap;
 
 import static java.lang.String.format;
 
 @Service
-public class GeoLocationService {
+class GeoLocationService {
   private final String url;
   private final String key;
   private final RestTemplate template = new RestTemplate();

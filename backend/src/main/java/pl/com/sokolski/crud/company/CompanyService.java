@@ -17,18 +17,34 @@ public class CompanyService {
   private final CompanyRepository companyRepository;
   private final UserCompanyService userCompanyService;
   private final UserService userService;
+  private final GeoLocationService geoLocationService;
 
   public CompanyService(
       CompanyRepository companyRepository,
       UserCompanyService userCompanyService,
-      @Lazy UserService userService) {
+      @Lazy UserService userService,
+      GeoLocationService geoLocationService) {
     this.companyRepository = companyRepository;
     this.userCompanyService = userCompanyService;
     this.userService = userService;
+    this.geoLocationService = geoLocationService;
   }
 
   public List<DisplayCompany> findAllById(final List<Integer> ids) {
     return companyRepository.findAllById(ids).stream().map(DisplayCompany::of).collect(toList());
+  }
+
+  public DisplayCompany save(final NewCompany newCompany) {
+    final String location =
+        geoLocationService.getLocation(newCompany.getLatitude(), newCompany.getLatitude());
+
+    final LocalizedCompany localizedCompany =
+        new LocalizedCompany(
+            newCompany.getName(), newCompany.getLatitude(), newCompany.getLongitude(), location);
+
+    final Company company = companyRepository.save(Company.create(localizedCompany));
+
+    return DisplayCompany.of(company);
   }
 
   DetailedCompany find(final int id) {

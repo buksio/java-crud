@@ -18,6 +18,9 @@ class Company {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
+  @Column(name = "name")
+  private String name;
+
   @Column(name = "latitude")
   private double latitude;
 
@@ -26,4 +29,15 @@ class Company {
 
   @Column(name = "location")
   private String location;
+
+  static Company create(final LocalizedCompany localizedCompany) {
+    final Company company = new Company();
+
+    company.setName(localizedCompany.getName());
+    company.setLatitude(localizedCompany.getLatitude());
+    company.setLongitude(localizedCompany.getLongitude());
+    company.setLocation(localizedCompany.getLocation());
+
+    return company;
+  }
 }
