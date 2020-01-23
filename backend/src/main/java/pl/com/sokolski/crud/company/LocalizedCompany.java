@@ -4,8 +4,8 @@ import lombok.Value;
 
 @Value
 class LocalizedCompany {
-    String name;
-    double latitude;
-    double longitude;
-    String location;
+  String name;
+  double latitude;
+  double longitude;
+  String location;
 }
