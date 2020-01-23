@@ -1,4 +1,4 @@
-package pl.com.sokolski.crud.utils.geo.exception;
+package pl.com.sokolski.crud.user.exception;
 
 public class GeoLocationException extends RuntimeException {
   public GeoLocationException(String message) {

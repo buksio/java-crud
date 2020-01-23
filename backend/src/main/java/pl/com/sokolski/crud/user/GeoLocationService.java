@@ -1,4 +1,4 @@
-package pl.com.sokolski.crud.utils.geo;
+package pl.com.sokolski.crud.user;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,7 +6,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import pl.com.sokolski.crud.utils.geo.exception.GeoLocationException;
+import pl.com.sokolski.crud.user.exception.GeoLocationException;
 
 import java.util.HashMap;
 
@@ -38,7 +38,8 @@ public class GeoLocationService {
 
     final String status = jsonObject.getString("status");
     if (!"OK".equals(status)) {
-      throw new GeoLocationException(format("Error while retrieving address of location: %f, %f", latitude, longitude));
+      throw new GeoLocationException(
+          format("Error while retrieving address of location: %f, %f", latitude, longitude));
     }
 
     return jsonObject.getJSONArray("results").getJSONObject(0).getString("formatted_address");

@@ -1,20 +1,31 @@
 package pl.com.sokolski.crud.company;
 
-import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import pl.com.sokolski.crud.company.exception.CompanyNotFoundException;
+import pl.com.sokolski.crud.user.UserService;
+import pl.com.sokolski.crud.usercompany.DisplayUserCompany;
 import pl.com.sokolski.crud.usercompany.UserCompanyService;
 
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-@AllArgsConstructor
 @Service
 public class CompanyService {
 
   private final CompanyRepository companyRepository;
   private final UserCompanyService userCompanyService;
+  private final UserService userService;
+
+  public CompanyService(
+      CompanyRepository companyRepository,
+      UserCompanyService userCompanyService,
+      @Lazy UserService userService) {
+    this.companyRepository = companyRepository;
+    this.userCompanyService = userCompanyService;
+    this.userService = userService;
+  }
 
   public List<DisplayCompany> findAllById(final List<Integer> ids) {
     return companyRepository.findAllById(ids).stream().map(DisplayCompany::of).collect(toList());
@@ -29,8 +40,12 @@ public class CompanyService {
                     new CompanyNotFoundException(
                         String.format("Could not find company with id: %d", id)));
 
-    return new DetailedCompany(
-        DisplayCompany.of(company), userCompanyService.findAllByCompanyId(id));
+    final List<Integer> userIds =
+        userCompanyService.findAllByCompanyId(company.getId()).stream()
+            .map(DisplayUserCompany::getUserId)
+            .collect(toList());
+
+    return new DetailedCompany(DisplayCompany.of(company), userService.findAllById(userIds));
   }
 
   List<DisplayCompany> findAll() {
